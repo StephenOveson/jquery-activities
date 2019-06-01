@@ -110,8 +110,8 @@ let isOperatorTrue = false;
   $(".equal").on('click', function(){
     console.log(this.value);
     isOperatorTrue = false;
-    if ($('.operator').this.value = 'plus'){
-      $('#result').html(firstNumber.this.value + secondNumber.this.value);
+    if (operatorMath.html(this.value) === '+'){
+      $('#result').html(parseInt(firstNumber.this.value) + parseInt(secondNumber.this.value));
     } else {
       return;
     }
