@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic JavaScript Dump</title>
+  <style>
+  .zombie{
+    color: darkgreen;
+  }
+  </style>
+</head>
+  <body>
+
+    <div id="empty-div"></div>
+
+    <!-- We now create a new JavaScript script. -->
+    <script type="text/javascript">
+      // debugger;
+      // Inside, we latch onto the "emptyDiv" using the JavaScript ".getElementById" selector.
+      let targetDiv = document.getElementById("empty-div");
+
+      // We then use the JavaScript method ".textContent" to change the content to "Hello friends!"
+      targetDiv.textContent = "Hello friends!";
+
+      let h1 = document.createElement('h1');
+
+      h1.classList.add("zombie")
+
+      targetDiv.appendChild(h1);
+
+      h1.textContent = 'A pleasure to meet you, Joey!'
+
+    </script>
+  </body>
+</html>
