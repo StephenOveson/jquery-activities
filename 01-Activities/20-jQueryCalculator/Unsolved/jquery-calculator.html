@@ -79,16 +79,39 @@ $(document).ready(function() {
 let firstNumber = $('#first-number');
 let operatorMath = $('#operator')
 let secondNumber = $('#second-number');
+let num1 = 0;
+let num2 = 0;
+let op;
 let clearScreen;
-let resultScreen;
-let isOperatorTrue = false;
+let resultScreen = $('#result');
+let submitOperator = false;
+let equalPress = false;
 // Your code here...
+
+function clearAll(){
+  firstNumber.empty();
+  num1 = undefined;
+  secondNumber.empty();
+  num2 = undefined;
+  operatorMath.empty();
+  op = undefined;
+  resultScreen.empty();
+  submitOperator = false;
+}
+
   $(".number").on('click', function(){
     console.log(this.value);
-    if (!isOperatorTrue){
-      firstNumber.html(this.value);
+    if (!submitOperator && equalPress){
+      clearAll()
+      firstNumber.html(firstNumber.html() + this.value);
+      num1 = firstNumber.html() / 1;
+      equalPress = false;
+    } else if (!submitOperator) {
+      firstNumber.html(firstNumber.html() + this.value);
+      num1 = firstNumber.html() / 1;
     } else {
-      secondNumber.html(this.value);
+      secondNumber.html(secondNumber.html() + this.value);
+      num2 = secondNumber.html() / 1;
     }
   });
 
@@ -96,25 +119,38 @@ let isOperatorTrue = false;
     console.log(this.value);
     let operator = $(this);
     operatorMath.html(operator.text());
-    isOperatorTrue = true;
+    op = this.value;
+    submitOperator = true;
   });
 
   $(".clear").on('click', function(){
     console.log(this.value);
-    firstNumber.empty();
-    secondNumber.empty();
-    operatorMath.empty();
-    isOperatorTrue = false;
+    clearAll()
   });
   
   $(".equal").on('click', function(){
     console.log(this.value);
-    isOperatorTrue = false;
-    if (operatorMath.html(this.value) === '+'){
-      $('#result').html(parseInt(firstNumber.this.value) + parseInt(secondNumber.this.value));
-    } else {
-      return;
-    }
+    submitOperator = false;
+    equalPress = true;
+    switch (op){
+      case 'plus':
+        resultScreen.html(num1 + num2);
+        break;
+      case 'minus':
+        resultScreen.html(num1 - num2);
+        break;
+      case 'times':
+        resultScreen.html(num1 * num2);
+        break;
+      case 'divide':
+        resultScreen.html(num1 / num2);
+        break;
+      case 'power':
+        resultScreen.html(Math.pow(num1, num2));
+        break;
+      default:
+        return;
+  }
   });
 
 });
