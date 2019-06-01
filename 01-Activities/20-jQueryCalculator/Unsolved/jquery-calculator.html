@@ -102,7 +102,7 @@ function clearAll(){
   $(".number").on('click', function(){
     console.log(this.value);
     if (!submitOperator && equalPress){
-      clearAll()
+      clearAll();
       firstNumber.html(firstNumber.html() + this.value);
       num1 = firstNumber.html() / 1;
       equalPress = false;
@@ -125,7 +125,7 @@ function clearAll(){
 
   $(".clear").on('click', function(){
     console.log(this.value);
-    clearAll()
+    clearAll();
   });
   
   $(".equal").on('click', function(){
