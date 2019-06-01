@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>jQuery Calculator</title>
+  <meta charset="UTF-8">
+  <title>jQuery Calculator</title>
 
-    <!-- Added link to the jQuery Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <!-- Added a link to Bootstrap-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!-- Added a link to our external stylesheet-->
-    <link rel="stylesheet" href="style.css">
+  <!-- Added a link to our external stylesheet-->
+  <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body>
 
-<!-- Jumbotron for Title -->
-<div class="jumbotron">
+  <!-- Jumbotron for Title -->
+  <div class="jumbotron">
     <h1 class="text-center">jQuery Calculator</h1>
     <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
-</div>
+  </div>
 
-<div class="container">
+  <div class="container">
 
     <div class="row">
 
@@ -73,89 +75,90 @@
     </div>
   </div>
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
-$(document).ready(function() {
-let firstNumber = $('#first-number');
-let operatorMath = $('#operator')
-let secondNumber = $('#second-number');
-let num1 = 0;
-let num2 = 0;
-let op;
-let clearScreen;
-let resultScreen = $('#result');
-let submitOperator = false;
-let equalPress = false;
-// Your code here...
+    $(document).ready(function () {
+      let firstNumber = $('#first-number');
+      let operatorMath = $('#operator')
+      let secondNumber = $('#second-number');
+      let num1 = 0;
+      let num2 = 0;
+      let op;
+      let clearScreen;
+      let resultScreen = $('#result');
+      let submitOperator = false;
+      let equalPress = false;
+      // Your code here...
 
-function clearAll(){
-  firstNumber.empty();
-  num1 = undefined;
-  secondNumber.empty();
-  num2 = undefined;
-  operatorMath.empty();
-  op = undefined;
-  resultScreen.empty();
-  submitOperator = false;
-}
+      function clearAll() {
+        firstNumber.empty();
+        num1 = undefined;
+        secondNumber.empty();
+        num2 = undefined;
+        operatorMath.empty();
+        op = undefined;
+        resultScreen.empty();
+        submitOperator = false;
+      }
 
-  $(".number").on('click', function(){
-    console.log(this.value);
-    if (!submitOperator && equalPress){
-      clearAll();
-      firstNumber.html(firstNumber.html() + this.value);
-      num1 = firstNumber.html() / 1;
-      equalPress = false;
-    } else if (!submitOperator) {
-      firstNumber.html(firstNumber.html() + this.value);
-      num1 = firstNumber.html() / 1;
-    } else {
-      secondNumber.html(secondNumber.html() + this.value);
-      num2 = secondNumber.html() / 1;
-    }
-  });
+      $(".number").on('click', function () {
+        console.log(this.value);
+        if (!submitOperator && equalPress) {
+          clearAll();
+          firstNumber.html(firstNumber.html() + this.value);
+          num1 = firstNumber.html() / 1;
+          equalPress = false;
+        } else if (!submitOperator) {
+          firstNumber.html(firstNumber.html() + this.value);
+          num1 = firstNumber.html() / 1;
+        } else {
+          secondNumber.html(secondNumber.html() + this.value);
+          num2 = secondNumber.html() / 1;
+        }
+      });
 
-  $(".operator").on('click', function(){
-    console.log(this.value);
-    let operator = $(this);
-    operatorMath.html(operator.text());
-    op = this.value;
-    submitOperator = true;
-  });
+      $(".operator").on('click', function () {
+        console.log(this.value);
+        let operator = $(this);
+        operatorMath.html(operator.text());
+        op = this.value;
+        submitOperator = true;
+      });
 
-  $(".clear").on('click', function(){
-    console.log(this.value);
-    clearAll();
-  });
-  
-  $(".equal").on('click', function(){
-    console.log(this.value);
-    submitOperator = false;
-    equalPress = true;
-    switch (op){
-      case 'plus':
-        resultScreen.html(num1 + num2);
-        break;
-      case 'minus':
-        resultScreen.html(num1 - num2);
-        break;
-      case 'times':
-        resultScreen.html(num1 * num2);
-        break;
-      case 'divide':
-        resultScreen.html(num1 / num2);
-        break;
-      case 'power':
-        resultScreen.html(Math.pow(num1, num2));
-        break;
-      default:
-        return;
-  }
-  });
+      $(".clear").on('click', function () {
+        console.log(this.value);
+        clearAll();
+      });
 
-});
+      $(".equal").on('click', function () {
+        console.log(this.value);
+        submitOperator = false;
+        equalPress = true;
+        switch (op) {
+          case 'plus':
+            resultScreen.html(num1 + num2);
+            break;
+          case 'minus':
+            resultScreen.html(num1 - num2);
+            break;
+          case 'times':
+            resultScreen.html(num1 * num2);
+            break;
+          case 'divide':
+            resultScreen.html(num1 / num2);
+            break;
+          case 'power':
+            resultScreen.html(Math.pow(num1, num2));
+            break;
+          default:
+            return;
+        }
+      });
 
-</script>
+    });
+
+  </script>
 
 </body>
+
 </html>
